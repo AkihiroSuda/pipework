@@ -1,0 +1,3 @@
+#!/bin/sh
+garbages=$(ip a | egrep '.[0-9]+: veth.*: .*state DOWN.*' | egrep -o 'veth.*:' | sed -e s/://g)
+for f in $garbages; do ip link delete $f; done
